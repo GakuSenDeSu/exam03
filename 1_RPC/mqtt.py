@@ -39,4 +39,4 @@ rc = 0
 while rc == 0:
     rc = mqttc.loop()
  
-print(str(rc))
+print("rc: "+str(rc))

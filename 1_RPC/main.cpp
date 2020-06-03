@@ -184,7 +184,7 @@ void Vel(){
 
 void getVel(Arguments *in, Reply *out) {
    for ( int i = 0; i< vel_num; i++){
-   pc.printf("FXOS8700Q VEL: X=%1.4f Y=%1.4f",v1[i], v2[i]);
+   pc.printf("%1.4f 1.4f",v1[i], v2[i]);
    }
    vel_num = 0;
    k = 0;

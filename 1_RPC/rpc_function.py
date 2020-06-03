@@ -89,13 +89,7 @@ print(char.decode())
 print("start sending RPC")
 
 for xn in range(0,int(10)):
-    # Record acc from PC
-    for x in range(0,int(100)):
-        line=s.readline() # Read an echo string from K66F terminated with '\n'
-        y1=line.decode().strip().split(" ")[0]
-        y1k[x] = float(y1)
-        y2=line.decode().strip().split(" ")[1]
-        y2k[x] = float(y2)
+    
     # send RPC to remote
     s.write(bytes("\r", 'UTF-8'))
     line=s.readline() # Read an echo string from K66F terminated with '\n' (pc.putc())
@@ -109,10 +103,14 @@ for xn in range(0,int(10)):
     print(line)
     line=s.readline() # Read an echo string from K66F terminated with '\n' (RPC reply)
     print(line)
-    line=s.readline() # Read an echo string from K66F terminated with '\n'
-    yn=line.decode()
-    ynk[xn] = int(yn)
     time.sleep(1)
+    # Record vec from PC
+    for x in range(0,int(100)):
+        line=s.readline() # Read an echo string from K66F terminated with '\n'
+        y1=line.decode().strip().split(" ")[0]
+        y1k[x] = float(y1)
+        y2=line.decode().strip().split(" ")[1]
+        y2k[x] = float(y2)
 
     # update vel and tilt results to mqtt
     mesg = {y1k, y2k}

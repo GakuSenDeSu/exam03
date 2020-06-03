@@ -27,7 +27,7 @@ RawSerial pc(USBTX, USBRX);
 EventQueue queue(32 * EVENTS_EVENT_SIZE);
 Thread thing1;
 EventQueue queue2(32 * EVENTS_EVENT_SIZE);
-Thread thing2;
+Thread thing2(osPriorityNormal, 120 * 1024 /*120K stack size*/);
 I2C i2c( PTD9,PTD8);
 int m_addr = FXOS8700CQ_SLAVE_ADDR1;
 //FXO
